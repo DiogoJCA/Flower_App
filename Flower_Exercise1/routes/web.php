@@ -14,24 +14,39 @@ use App\Http\Controllers\FlowerController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Home page Route
+Route::get('/', function() {
+    return view('home');
+})->name('home');
 
 // Basic CRUD structure is handle by 'resource' keyword.
-Route::get('/flowers', [FlowerController::class, 'index']);
+Route::get('/flowers', [FlowerController::class, 'index'])->name('flowers');
 
-// Route to delete flowers
-Route::get('/flowers/delete/{id}', [FlowerController::class, 'destroy']);
+// Route to the contact page
+Route::get('/contact', [FlowerController::class, 'contact'])->name('contact');
 
-// Route to the form page
-Route::get('/create-flower', [FlowerController::class, 'create']);
+// Route to the add flower form page
+Route::get('/create-flower', [FlowerController::class, 'create'])->name('create-flower');
 
 // Route to add the flower
 Route::post('/create-flower', [FlowerController::class, 'store']);
 
+// Route to edit the flowers
+Route::get('/update-flower/{id}', [FlowerController::class, 'edit']);
+
 // Update the flower
 Route::post('/update-flower/{id}', [FlowerController::class, 'update']);
 
-// Route to edit the flowers
-Route::get('/update-flower/{id}', [FlowerController::class, 'edit']);
+// Route to delete flowers
+Route::get('/flowers/delete/{id}', [FlowerController::class, 'destroy']);
+
+// Route to show the flower
+Route::get('/flower-details/{id}', [FlowerController::class, 'show']);
+
+// Route to Add a comment
+Route::post('/flower-details/{id}', [FlowerController::class, 'addcomment']);
+

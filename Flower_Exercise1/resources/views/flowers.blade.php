@@ -2,8 +2,10 @@
 
 @section('title', 'flowers list')
 
+<body class="flowers">
+    
 @section('content')
-
+<link rel="stylesheet" href="flowers_style.css">
 
 <h3>Flowers list<h3>
     @if(count($flo)>0)
@@ -11,12 +13,13 @@
         @foreach ($flo as $f)
             <p>Name : {{$f->name}}</p>   
             <p>Price : {{$f->price}}</p>   
-            <a href="{{ url('update-flower/' . $f->id)}}">Edit Flower</a>
+            <a href="{{ url('flower-details/' . $f->id)}}">Flower Details</a><br>
+            <a href="{{ url('update-flower/' . $f->id)}}">Edit Flower</a><br>
             <a href="{{ url('flowers/delete/' . $f->id)}}" style="color: red">Delete Flower</a>
         @endforeach
-        
     @else
         <p>No flowers found.</p>
     @endif 
         
 @endsection
+</body>

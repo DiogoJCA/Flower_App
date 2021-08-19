@@ -1,9 +1,11 @@
 @extends('layouts.mytemplate')
 
-@section('title', 'Create Flower')
+@section('title', 'Contact')
 
+<body class="contact">
+    
 @section('content')
-
+<link rel="stylesheet" href="contact_style.css">
 <form action="" method="post">
     {{-- You must add this to every form, security token --}}
     @csrf
@@ -14,15 +16,6 @@
     <input type="submit" value="Add Flower" name="submitBtn">
 </form>
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-
-
 @endsection
+
+</body>

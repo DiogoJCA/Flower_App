@@ -6,13 +6,11 @@
 
 <form action="" method="post">
     @csrf
-    @foreach ($flo as $f)
     <label for="name">Name</label>
-    <input type="text" name="name" value="{{$f->name}}"><br>
+    <input type="text" name="name" value="{{$flo->name}}"><br>
     <label for="price">Price</label>
-    <input type="text" name="price" value="{{$f->price}}">
+    <input type="text" name="price" value="{{$flo->price}}">
     <input type="submit" value="Edit Flower" name="submitBtn">
-    @endforeach
 </form>
 
 

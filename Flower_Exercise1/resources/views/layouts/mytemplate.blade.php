@@ -7,18 +7,24 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    
+    @yield('css')
     <nav>
         <ul>
-            <li><a href="{{ url('flowers')}}">Flowers</a></li>
-            <li><a href="{{ url('create-flower')}}">Create Flower</a></li>
+            <li><a href="{{ route('home') }}">Home</a></li>
+            <li><a href="{{ route('flowers') }}">Flowers</a></li>
+            <li><a href="{{ route('create-flower')}}">Create Flower</a></li>
+            <li><a href="{{ route('contact') }}">Contact</a></li>
         </ul>
     </nav>
-
+    
+    
     <div class="content">
+        
+        
         @yield('content')
+        
     </div>
-
+   
     <footer>
         <p>This is my footer</p>
     </footer>

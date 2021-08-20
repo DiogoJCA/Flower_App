@@ -6,7 +6,8 @@
 
 <h3>My flower<h3>
 <p>Name : {{$flower->name}}</p>   
-<p>Price : {{$flower->price}}</p>   
+<p>Price : {{$flower->price}}€</p>   
+<p>Type : {{$flower->type}}</p>   
 <a href="{{ url('update-flower/' . $flower->id)}}">Edit Flower</a>
 <a href="{{ url('flowers/delete/' . $flower->id)}}" style="color: red">Delete Flower</a>
 <form action="" method="post">

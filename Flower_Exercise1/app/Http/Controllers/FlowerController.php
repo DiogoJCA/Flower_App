@@ -69,6 +69,7 @@ class FlowerController extends Controller
         // Set the attributes
         $flowers->name = $request->name;
         $flowers->price = $request->price;
+        $flowers->type = $request->type;
         
         // Save on the model instance
         $flowers->save();
@@ -131,6 +132,7 @@ class FlowerController extends Controller
         // Set the Attributes
         $flowers->name = $request->name;
         $flowers->price = $request->price;
+        $flowers->type = $request->type;
 
         // Save on the model instance
         $flowers->save();

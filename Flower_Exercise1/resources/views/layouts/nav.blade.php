@@ -1,4 +1,9 @@
-@section('content')
-    
+<nav>
+    <ul>
+        <li><a href="{{ route('home') }}">Home</a></li>
+        <li><a href="{{ route('flowers') }}">Flowers</a></li>
+        <li><a href="{{ route('create-flower')}}">Create Flower</a></li>
+        <li><a href="{{ route('contact') }}">Contact</a></li>
+    </ul>
+</nav>
 
-@endsection

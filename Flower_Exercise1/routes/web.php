@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlowerController;
 
@@ -50,3 +51,10 @@ Route::get('/flower-details/{id}', [FlowerController::class, 'show']);
 // Route to Add a comment
 Route::post('/flower-details/{id}', [FlowerController::class, 'addcomment']);
 
+Route::get('/api/getXflowers/{amount}', [ApiController::class, 'getXflowers']);
+
+Route::get('/api/getFlowers', [ApiController::class,'getFlowers']);
+
+Route::get('/api/getFlower/{id}', [ApiController::class,'getFlower']);
+
+Route::get('/api/getType/{type}', [ApiController::class, 'getType']);

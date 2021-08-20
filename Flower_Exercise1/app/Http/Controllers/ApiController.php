@@ -12,15 +12,22 @@ class ApiController extends Controller
         $flowers = Flower::all();
         return $flowers->toJson(JSON_PRETTY_PRINT);
     }
-    public function getMovies()
+
+    public function getXflowers($amount)
     {
-        $movies = Movie::all();
-        return $movies->toJson(JSON_PRETTY_PRINT);
+        $flowers = Flower::limit($amount)->get();
+        return $flowers->toJson(JSON_PRETTY_PRINT);
     }
 
-    public function getMovie($title)
+    public function getFlower($id)
     {
-        $movies = Movie::where('title', 'like', '%' . $title . '%')->get();
-        return $movies->toJson(JSON_PRETTY_PRINT);
+        $flower = Flower::find($id);
+        return $flower->toJson(JSON_PRETTY_PRINT);
+    }
+
+    public function getType($type)
+    {
+        $flowers = Flower::where('type', $type)->get();
+        return $flowers->toJson(JSON_PRETTY_PRINT);
     }
 }

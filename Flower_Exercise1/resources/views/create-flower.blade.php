@@ -10,7 +10,12 @@
     <label for="name">Name</label>
     <input type="text" name="name"><br>
     <label for="price">Price</label>
-    <input type="text" name="price">
+    <input type="text" name="price"><br>
+    <label for="type">Type</label>
+    <select name="type" id="type">
+        <option value="Asteraceae">Asteraceae</option>
+        <option value="Magnoliophyta">Magnoliophyta</option>
+    </select>
     <input type="submit" value="Add Flower" name="submitBtn">
 </form>
 

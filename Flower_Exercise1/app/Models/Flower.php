@@ -17,9 +17,9 @@ class Flower extends Model
     {
         return $this->hasMany(Comment::class);
     }
-    public function getUpdateAtAttribute($updated_at)
+    public function getUpdateAtAttribute()
     {
-        //return "{$this->title} / {$this->date_of_release}";
-        return date("j F Y", $updated_at);  
+        $timestamp = strtotime($this->attributes['updated_at']);
+        return date('d M Y', $timestamp);
     }
 }

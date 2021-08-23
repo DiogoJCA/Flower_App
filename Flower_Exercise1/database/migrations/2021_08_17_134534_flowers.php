@@ -19,6 +19,7 @@ class Flowers extends Migration
             $table->integer('price');
             $table->timestamps();
             $table->enum('type',['Asteraceae','Magnoliophyta']);
+            $table->string('poster')->nullable();
             
             // $table->unsignedBigInteger('author_id');
             // $table->foreign('author_id')->references('id')->on('authors');

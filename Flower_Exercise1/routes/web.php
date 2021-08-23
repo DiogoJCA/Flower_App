@@ -3,6 +3,7 @@
 use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlowerController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,7 +35,7 @@ Route::get('/contact', [FlowerController::class, 'contact'])->name('contact');
 Route::get('/create-flower', [FlowerController::class, 'create'])->name('create-flower');
 
 // Route to add the flower
-Route::post('/create-flower', [FlowerController::class, 'store']);
+Route::post('/create-flower', [FlowerController::class, 'store'])->name('create-flower-submit');
 
 // Route to edit the flowers
 Route::get('/update-flower/{id}', [FlowerController::class, 'edit']);
@@ -58,3 +59,9 @@ Route::get('/api/getFlowers', [ApiController::class,'getFlowers']);
 Route::get('/api/getFlower/{id}', [ApiController::class,'getFlower']);
 
 Route::get('/api/getType/{type}', [ApiController::class, 'getType']);
+
+// Route to get the register form
+Route::get('/register', [UserController::class, 'getForm'])->name('register');
+
+// Route to post the register form
+Route::post('/register', [UserController::class, 'postForm'])->name('register-submit');

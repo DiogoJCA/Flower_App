@@ -20,5 +20,6 @@
     <footer>
         <p>This is my footer</p>
     </footer>
+    @yield('scripts')
 </body>
 </html>

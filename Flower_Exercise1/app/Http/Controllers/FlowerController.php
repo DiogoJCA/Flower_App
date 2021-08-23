@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\Flower;
 Use App\Models\Comment;
+use Illuminate\Support\Facades\Validator;
 
 class FlowerController extends Controller
 {
@@ -55,27 +56,49 @@ class FlowerController extends Controller
         //DB::insert('INSERT INTO flowers(name, price) VALUES(?, ?)', ['tulip', 36]);
 
         // Form validation
-        $validated = $request->validate([
+        $validations = Validator::make($request->all(), [
             'name' => 'required|max:255',
             'price' => 'required|numeric|min:2|max:100',
         ]);
 
-        // $request contains every data from the form
-        // $result = DB::insert('INSERT INTO flowers(name, price) VALUES(?, ?)', [$request->name, $request->price]);
-
-        // Instanciate a new model
-        $flowers = new Flower;
-
-        // Set the attributes
-        $flowers->name = $request->name;
-        $flowers->price = $request->price;
-        $flowers->type = $request->type;
+        // Message
+        if ($validations->fails()) 
+            return response()->json(['errors' => $validations->errors()->all()]);
+            
+        // Upload file
         
+        // Set the file name
+        $fileName = $request->file->getClientOriginalName();
+            
+        // Path where the file is saved
+        $public_path = public_path('uploads');
+    
+        // Move the file
+        $request->file->move($public_path, $fileName);
+            
+        // Try to insert in the DB
+        // Instanciate a new model
+        $flower = new Flower;
+    
+        // Set the attributes
+        $flower->name = $request->name;
+        $flower->price = $request->price;
+        $flower->type = $request->type;
+        $flower->poster = $fileName;
+            
         // Save on the model instance
-        $flowers->save();
+        $flower->save();
+        
+
+        
+
+        
+
+        return response()->json(['success' => 'Flower is added']);
+        
 
         // Function to return to previous page
-        return redirect('flowers')->with('success', $request->name . ' was created successfully');
+        // return redirect('flowers')->with('success', $request->name . ' was created successfully');
     }
 
     /**

@@ -7,6 +7,7 @@
 @section('content')
 <link rel="stylesheet" href="flowers_style.css">
 
+<h2>User : {{session('username')}}</h2>
 <h3>Flowers list<h3>
     @if(count($flo)>0)
         <p>We have some flowers</p>

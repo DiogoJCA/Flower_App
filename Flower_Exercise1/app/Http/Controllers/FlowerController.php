@@ -88,12 +88,7 @@ class FlowerController extends Controller
             
         // Save on the model instance
         $flower->save();
-        
-
-        
-
-        
-
+    
         return response()->json(['success' => 'Flower is added']);
         
 

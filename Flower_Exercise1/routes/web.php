@@ -4,6 +4,7 @@ use App\Http\Controllers\ApiController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FlowerController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\EnsureUserIsLoggedIn;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ Route::get('/', function() {
 Route::get('/flowers', [FlowerController::class, 'index'])->name('flowers');
 
 // Route to the contact page
-Route::get('/contact', [FlowerController::class, 'contact'])->name('contact');
+Route::get('/contact', [FlowerController::class, 'contact'])->middleware(EnsureUserIsLoggedIn::class)->name('contact');
 
 // Route to the add flower form page
 Route::get('/create-flower', [FlowerController::class, 'create'])->name('create-flower');
@@ -65,3 +66,9 @@ Route::get('/register', [UserController::class, 'getForm'])->name('register');
 
 // Route to post the register form
 Route::post('/register', [UserController::class, 'postForm'])->name('register-submit');
+
+// Route to the login page
+Route::get('/login', [UserController::class,'getLogin'])->name('login');
+
+Route::post('/login', [UserController::class,'postLogin'])->name('login-submit');
+Route::get('/test', [UserController::class,'test'])->name('test');
